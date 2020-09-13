@@ -5,6 +5,23 @@
 		<link rel="stylesheet" type="text/css" href="stilus.css">
         <title>A Witcher Story</title>
         <style type="text/css">
+                      *{
+                box-sizing: border-box;
+              }
+
+              .column {
+                float: left;
+                width: 33.33%;
+                padding: 5px;
+              }
+
+              /* Clearfix (clear floats) */
+              .row::after {
+                content: "";
+                clear: both;
+                display: table;
+              }
+
         body {
               margin: 0;
               font-family: Arial, Helvetica, sans-serif;
@@ -39,20 +56,15 @@
                   background-color: #4CAF50;
                   color: white;
                 }
-                        #myImg {
+                        .myImg {
                           border-radius: 5px;
                           cursor: pointer;
                           transition: 0.3s;
-                          display: block;
-                          position: absolute;
-                          margin: auto;
-                          top: 0;
-                          left: 0;
-                          right: 0;
-                          bottom: 0;  
                         }
 
-                    #myImg:hover {opacity: 0.7;}
+                    .myImg:hover {opacity: 0.7;
+                      
+                    }
 
                     /* The Modal (background) */
                     .modal {
@@ -143,7 +155,22 @@
       <div style="padding-left:16px"></div>
 
 
-      <img id="myImg" src="nagyított.jpg" alt="Witcher Books" style="width:100%;max-width:300px;" >
+      <table>
+      <div class="row"></div>
+        <div class="column">
+          <td>
+          <img class="myImg" src="nagyított2.jpg" alt="Witcher Books" style="width:100%;max-width:300px;" id="float">
+        </td>
+        </div>
+        <div class="column">
+          <td>
+          <img class="myImg" src="nagyított3.jpg" alt="Witcher xd" style="width:100%;max-width:300px;" >
+         </td> 
+        </div>
+      </div>
+    </table>
+      
+      
       
  
         <!-- The Modal -->
@@ -158,13 +185,15 @@
         var modal = document.getElementById("myModal");
 
         // Get the image and insert it inside the modal - use its "alt" text as a caption
-        var img = document.getElementById("myImg");
+        var img = document.getElementsByClassName("myImg");
         var modalImg = document.getElementById("img01");
         var captionText = document.getElementById("caption");
-        img.onclick = function(){
+        for (let index = 0; index < img.length; index++) {
+          img[index].onclick = function(){
           modal.style.display = "block";
           modalImg.src = this.src;
           captionText.innerHTML = this.alt;
+          }
         }
 
         // Get the <span> element that closes the modal
